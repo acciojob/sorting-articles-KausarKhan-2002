@@ -1,19 +1,31 @@
-//your JS code here. If required.
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
-bands.sort()
+const bands = [
+  'The Plot in You',
+  'The Devil Wears Prada',
+  'Pierce the Veil',
+  'Norma Jean',
+  'The Bled',
+  'Say Anything',
+  'The Midway State',
+  'We Came as Romans',
+  'Counterparts',
+  'Oh, Sleeper',
+  'A Skylit Drive',
+  'Anywhere But Here',
+  'An Old Dog'
+];
 
-  // Function to remove articles for sorting
-    function stripArticle(name) {
-      return name.replace(/^(a |an |the )/i, "").trim();
-    }
+// Function to strip the articles from the names
+function stripArticle(name) {
+  return name.replace(/^(a |an |the )/i, '').trim();
+}
 
-    // Sort bands ignoring articles
-    const sortedBands = bands.sort((a, b) => stripArticle(a).localeCompare(stripArticle(b)));
+// Sort the bands array ignoring articles
+const sortedBands = bands.sort((a, b) => (stripArticle(a) > stripArticle(b) ? 1 : -1));
 
-    // Display sorted list in HTML
-    const bandList = document.getElementById("band");
-    sortedBands.forEach(band => {
-      const listItem = document.createElement("li");
-      listItem.textContent = band;
-      bandList.appendChild(listItem);
-    });
+// Add sorted items to the UI
+const bandsList = document.getElementById('bands');
+sortedBands.forEach(band => {
+  const li = document.createElement('li');
+  li.textContent = band;
+  bandsList.appendChild(li);
+});
